@@ -8,7 +8,7 @@ pipeline {
             steps {
                 // Checkout the source code from your version control system
                 // For example, using Git:
-                git 'https://github.com/architectdevops7/java-application.git'
+                git 'https://github.com/cbasavak/java-application.git'
             }
         }
         
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 // Trigger deployment from Nexus repository to Tomcat server
                 // Replace `your-artifact` and `your-version` with the actual artifact name and version
-                deploy adapters: [tomcat9(credentialsId: '3384cd64-1ec0-4af6-96fa-8f5d19f416ab', path: '', url: 'http://35.160.12.251:8080/')], contextPath: null, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://3.80.140.56:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
