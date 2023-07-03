@@ -18,6 +18,13 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Deployment') {
+            steps {
+                // Trigger deployment from Nexus repository to Tomcat server
+                // Replace `your-artifact` and `your-version` with the actual artifact name and version
+               deploy adapters: [tomcat9(credentialsId: 'tomcat-user', path: '', url: 'http://54.91.87.176:8080/')], contextPath: null, war: '**/*.war'
+            }
+        }
         
     }
 }
