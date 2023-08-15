@@ -23,6 +23,6 @@ jobs:
         password: admin
         format: maven2
         repository: maven-releases
-        coordinates: groupId=com.example artifactId=student-task-tracker version=1.0
+        coordinates: groupId=com.example artifactId=student-task-tracker version=1.0.0
         assets: extension=war
         filename: ./target/student-task-tracker.war
