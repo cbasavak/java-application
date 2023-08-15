@@ -15,24 +15,11 @@ jobs:
         java-version: 17
     - name: Build with Maven
       run: mvn package --file pom.xml
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      with:
-         host.url: http://43.204.38.164:9000
-         token: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
-         projectName: 'develop'
-         projectKey: develop
-        
-        
-          # Check the Quality Gate status.
-    - name: SonarQube Quality Gate check
-      id: sonarqube-quality-gate-check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      with:
-         host.url: http://43.204.38.164:9000
-         token: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
-         projectName: 'develop'
-         projectKey: develop
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
      
      
     - name: Nexus Repo Publish
