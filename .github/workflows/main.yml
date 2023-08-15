@@ -18,8 +18,9 @@ jobs:
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        SONAR_PROJECT_KEY: develop
+        SONAR_TOKEN: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
+        SONAR_HOST_URL: http://43.204.38.164:9000
 
     # Check the Quality Gate status.
     - name: SonarQube Quality Gate check
