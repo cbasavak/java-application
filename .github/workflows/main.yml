@@ -17,12 +17,11 @@ jobs:
       run: mvn package --file pom.xml
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
-      with:
-        projectBaseDir: .
-        projectKey: develop
-        projectName: 'develop'
-        sonarUrl: http://43.204.38.164:9000
-        token: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
+    with: 
+            Dsonar.projectKey:develop 
+            Dsonar.projectName:'develop' 
+            Dsonar.host.url:http://43.204.38.164:9000 
+            Dsonar.token:sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
       env:
         SONAR_TOKEN: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
         SONAR_HOST_URL: http://43.204.38.164:9000
