@@ -17,11 +17,12 @@ jobs:
       run: mvn package --file pom.xml
     - name: SonarQube Scan
       uses: sonarsource/sonarqube-scan-action@master
+       run:|
+        mvn clean verify sonar:sonar -Dsonar.projectKey=develop -Dsonar.projectName='develop' -Dsonar.host.url=http://43.204.38.164:9000 -Dsonar.token=sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
       env:
-        SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+        SONAR_PROJECT_KEY: develop
         SONAR_TOKEN: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
         SONAR_HOST_URL: http://43.204.38.164:9000
-
     # Check the Quality Gate status.
     - name: SonarQube Quality Gate check
       id: sonarqube-quality-gate-check
@@ -29,9 +30,9 @@ jobs:
       # Force to fail step after specific time.
       timeout-minutes: 5
       env:
-       SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
+       SONAR_PROJECT_KEY: develop
+       SONAR_TOKEN: sqp_83d9f2c92591c4b36edde5d15f6d05c9f6ac9ccb
+       SONAR_HOST_URL: http://43.204.38.164:9000
     - name: Nexus Repo Publish
       uses: sonatype-nexus-community/nexus-repo-github-action@master
       with:
